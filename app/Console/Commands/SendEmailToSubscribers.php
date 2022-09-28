@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Website;
 use Illuminate\Console\Command;
 use App\Services\WebsiteService;
+use Illuminate\Support\Facades\Log;
 
 class SendEmailToSubscribers extends Command
 {
@@ -29,10 +30,16 @@ class SendEmailToSubscribers extends Command
      */
     public function handle()
     {
-        foreach (Website::all() as $website) {
-            $website->posts->each(function ($post) use ($website) {
-                (new WebsiteService($website))->sendEmailToSubscribers($post);
-            });
+        try {
+            Log::debug("message");
+            $websites = Website::all();
+            foreach ($websites as $website) {
+                $website->posts->each(function ($post) use ($website) {
+                    (new WebsiteService($website))->sendEmailToSubscribers($post);
+                });
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
     }
 }

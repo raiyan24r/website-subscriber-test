@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Website;
 use App\Jobs\EmailSubscriber;
 use App\Services\UserService;

@@ -9,6 +9,7 @@ use App\Services\WebsiteService;
 use App\Services\ResponseService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\NewSubscriberRequest;
+use App\Services\UserService;
 
 class WebsiteController extends Controller
 {
