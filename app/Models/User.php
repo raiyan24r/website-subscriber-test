@@ -27,4 +27,9 @@ class User extends Authenticatable
 
         return $this->belongsToMany(Website::class, 'user_subscriptions', 'user_id', 'website_id');
     }
+
+    public function emailLogs()
+    {
+        return $this->hasMany(UserEmailLog::class, 'user_id', 'id');
+    }
 }

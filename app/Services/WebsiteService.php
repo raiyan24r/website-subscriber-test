@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Post;
 use App\Models\Website;
 use App\Jobs\EmailSubscriber;
+use App\Services\UserService;
 
 class WebsiteService
 {
@@ -30,9 +31,10 @@ class WebsiteService
     public function sendEmailToSubscribers(Post $post)
     {
         $this->website->subscribers->each(function ($subscriber) use ($post) {
-            EmailSubscriber::dispatch($post->title, $post->description, $subscriber->email)->onQueue('emails');
+            $isEmailSent = (new UserService($subscriber))->checkIfEmailSent($post);
+            if (!$isEmailSent) {
+                EmailSubscriber::dispatch($subscriber, $post)->onQueue('emails');
+            }
         });
     }
-
-    
 }
