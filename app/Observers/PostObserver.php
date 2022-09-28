@@ -14,50 +14,10 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        //
-    }
 
-    /**
-     * Handle the Post "updated" event.
-     *
-     * @param  \App\Models\Post  $post
-     * @return void
-     */
-    public function updated(Post $post)
-    {
-        //
-    }
+        $website = $post->website;
+        $websiteService = new WebsiteService($website);
 
-    /**
-     * Handle the Post "deleted" event.
-     *
-     * @param  \App\Models\Post  $post
-     * @return void
-     */
-    public function deleted(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Handle the Post "restored" event.
-     *
-     * @param  \App\Models\Post  $post
-     * @return void
-     */
-    public function restored(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Handle the Post "force deleted" event.
-     *
-     * @param  \App\Models\Post  $post
-     * @return void
-     */
-    public function forceDeleted(Post $post)
-    {
-        //
+        $websiteService->sendEmailToSubscribers($post);
     }
 }
