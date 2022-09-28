@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Post;
 use App\Models\Website;
+use App\Jobs\EmailSubscriber;
 
 class WebsiteService
 {
