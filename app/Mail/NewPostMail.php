@@ -30,7 +30,7 @@ class NewPostMail extends Mailable
      */
     public function build()
     {
-        return $this->from('raiyan24r@gmail.com', 'Raiyan Ibne Hafiz')
+        return $this->from(config('mail.from.address'))
             ->subject($this->title)
             ->view('emails.new-post');
     }

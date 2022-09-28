@@ -14,8 +14,8 @@
 
 ## Test Project
 
--postman collection JSON link : https://www.getpostman.com/collections/bf790cbc17ba54b4ef81
--command to send email to website's new subscribers
+- postman collection JSON link : https://www.getpostman.com/collections/bf790cbc17ba54b4ef81
+- command to send email to website's new subscribers
 ```sh
 
 php artisan email:subscribers

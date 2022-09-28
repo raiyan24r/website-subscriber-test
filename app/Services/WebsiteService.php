@@ -26,7 +26,7 @@ class WebsiteService
     }
 
     /**
-     * Send email to all subscribers of the website
+     * Send email to all subscribers of the website and also check if email is already sent to a user
      * @param Post $post
      */
     public function sendEmailToSubscribers(Post $post)

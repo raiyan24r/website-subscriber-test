@@ -31,7 +31,6 @@ class SendEmailToSubscribers extends Command
     public function handle()
     {
         try {
-            Log::debug("message");
             $websites = Website::all();
             foreach ($websites as $website) {
                 $website->posts->each(function ($post) use ($website) {
